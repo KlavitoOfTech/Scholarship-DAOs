@@ -59,7 +59,7 @@ describe("ScholarshipDAO", function () {
 
     const proposal = await scholarshipDAO.proposals(0);
     expect(proposal.executed).to.be.true;
-});
+  });
 
   it("Should fail if a non-voter tries to vote", async function () {
     await expect(scholarshipDAO.connect(nonVoter).vote(0)).to.be.revertedWith("Not a registered voter");
