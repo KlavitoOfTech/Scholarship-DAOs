@@ -60,5 +60,9 @@ contract ScholarshipDAO {
         require(success, "Transfer failed");
     }
 
+    function proposalsLength() external view returns (uint) {
+        return proposals.length;
+    }
+
     receive() external payable {}
 }
