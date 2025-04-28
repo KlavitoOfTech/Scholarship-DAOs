@@ -1,17 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './App.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client"; // For React 18+
+import { BrowserRouter as Router } from "react-router-dom"; // Import BrowserRouter
+import App from "./App"; // Your main App component
+import "./index.css"; // Your global styles
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Create the root element for React 18
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// Render the App wrapped in Router to enable routing
 root.render(
-  <React.StrictMode>
+  <Router>
     <App />
-  </React.StrictMode>
+  </Router>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
