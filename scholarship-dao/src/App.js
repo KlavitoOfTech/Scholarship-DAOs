@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"; // Make sure to use BrowserRouter
 import { ethers } from "ethers";
-import "./App.css";
+import Home from "./components/Home";
+import Apply from "./components/Apply";
+import Voting from "./components/Voting";
+import "./styles/App.css";
 
+// Contract details
 const contractABI = [
   "function proposals(uint256) view returns (string name, string description, uint256 amount, address recipient, uint256 votes, bool executed)",
   "function voters(address) view returns (bool)",
@@ -12,7 +17,7 @@ const contractABI = [
   "function executeProposal(uint256)",
   "function proposalsLength() view returns (uint256)"
 ];
-const contractAddress = "0xD03ed2100F59eD19819093eDf1bf8618cC71Dc63"; // replace this
+const contractAddress = "0xD03ed2100F59eD19819093eDf1bf8618cC71Dc63"; // Replace with your contract address
 
 function App() {
   const [account, setAccount] = useState(null);
@@ -21,53 +26,105 @@ function App() {
 
   const connectWallet = async () => {
     if (window.ethereum) {
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      const signer = await provider.getSigner();
-      const address = await signer.getAddress();
-      setAccount(address);
-
-      const contract = new ethers.Contract(contractAddress, contractABI, provider);
-      const rawBalance = await provider.getBalance(contractAddress);
-      setBalance(ethers.formatEther(rawBalance));
-
-      const length = await contract.proposalsLength().catch(() => 0);
-      setProposalCount(length?.toString());
+      try {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+  
+        // Check if already connected
+        const accounts = await provider.send("eth_accounts", []);
+        if (accounts.length > 0) {
+          const address = accounts[0];
+          setAccount(address);
+        } else {
+          // Only if not connected, request connection
+          const signer = await provider.getSigner();
+          const address = await signer.getAddress();
+          setAccount(address);
+        }
+  
+        const contract = new ethers.Contract(contractAddress, contractABI, provider);
+        const rawBalance = await provider.getBalance(contractAddress);
+        setBalance(ethers.formatEther(rawBalance));
+  
+        const length = await contract.proposalsLength().catch(() => 0);
+        setProposalCount(length?.toString());
+      } catch (error) {
+        console.error(error);
+        alert("Failed to connect wallet");
+      }
     } else {
       alert("MetaMask not detected");
     }
-  };
+  };  
+
+  useEffect(() => {
+    if (window.ethereum) {
+      connectWallet();
+    }
+  }, []);
+
+  console.log("Rendering App component");
 
   return (
-    <div className="app">
-      <div className="header">
-        <div className="branding">
-          <div className="logo-circle">S</div>
-          <div className="dao-title">
-            <h2>Scholarship</h2>
-            <h2>DAO</h2>
+    <>
+      <div className="app">
+        <div className="header">
+          <div className="branding">
+            <div className="logo-circle">S</div>
+            <div className="dao-title">
+              <h2>Scholarship</h2>
+              <h2>DAO</h2>
+            </div>
           </div>
+          {account && (
+            <div className="profile">
+              <img src="https://i.pravatar.cc/40?img=3" alt="Profile" />
+            </div>
+          )}
         </div>
-        {account && (
-          <div className="profile">
-            <img src="https://i.pravatar.cc/40?img=3" alt="Profile" />
-          </div>
-        )}
-      </div>
 
-      <div className="wallet-section">
-        {!account ? (
-          <button className="connect-btn" onClick={connectWallet}>
-            Connect MetaMask
-          </button>
-        ) : (
-          <>
-            <p><strong>Connected:</strong> {account}</p>
-            <p><strong>DAO Balance:</strong> {balance} ETH</p>
-            <p><strong>Proposals Created:</strong> {proposalCount}</p>
-          </>
-        )}
-      </div>
-    </div>
+        <div style={{ marginBottom: "2rem" }}>
+          <Link to="/" style={{ marginRight: "1rem", color: "white" }}>Home</Link>
+          <Link to="/apply" style={{ color: "white" }}>Apply</Link>
+          <Link to="/vote" style={{ color: "white" }}>Vote</Link>
+        </div>
+
+        <div className="wallet-section">
+          {!account ? (
+            <button className="connect-btn" onClick={connectWallet}>
+              Connect MetaMask
+            </button>
+          ) : (
+            <>
+              <p><strong>Connected:</strong> {account}</p>
+              <p><strong>DAO Balance:</strong> {balance} ETH</p>
+              <p><strong>Proposals Created:</strong> {proposalCount}</p>
+            </>
+          )}
+        </div>
+
+        {/* Routes */}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home />
+            }
+          />
+          <Route
+            path="/apply"
+            element={
+              <Apply />
+            }
+          />
+          <Route
+            path="/vote"
+            element={
+              <Voting />
+            }
+          />
+        </Routes>
+      </div> 
+    </>
   );
 }
 
