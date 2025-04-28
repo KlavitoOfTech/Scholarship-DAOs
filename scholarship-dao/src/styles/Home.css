@@ -1,0 +1,54 @@
+/* src/styles/home.css */
+
+.wallet-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+  }
+  
+  .wallet-section button.connect-btn {
+    background-color: #0061F2;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .wallet-section button.connect-btn:hover {
+    background-color: #004bb5;
+  }
+  
+  .wallet-section p {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .wallet-section p strong {
+    font-weight: bold;
+  }
+  
+  .profile {
+    margin-top: 1rem;
+  }
+  
+  .profile img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .connect-btn {
+    margin-top: 1rem;
+  }
+  

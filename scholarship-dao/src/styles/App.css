@@ -1,0 +1,74 @@
+body {
+  margin: 10rem;
+  background-color: #0f0f0f;
+  color: #fff;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;  /* Horizontal center */
+  align-items: center;  
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.app {
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-circle {
+  background-color: #16a34a;
+  color: white;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.dao-title h2 {
+  margin: 0;
+  line-height: 1;
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+}
+
+.wallet-section {
+  margin-top: 2rem;
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 1rem;
+  max-width: 400px;
+}
+
+.connect-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #16a34a;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.connect-btn:hover {
+  background-color: #15803d;
+}

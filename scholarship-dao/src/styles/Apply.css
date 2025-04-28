@@ -1,0 +1,67 @@
+/* Apply.css */
+.apply-page {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 2rem;
+    text-align: center;
+    background-color: #1a1a1a; /* Matching dark background */
+    border-radius: 1rem; /* Rounded corners to match the card-like appearance */
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Adding subtle shadow */
+  }
+  
+  .apply-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .apply-form input,
+  .apply-form textarea {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #333; /* Dark input background for consistency */
+    color: white;
+  }
+  
+  .apply-form input::placeholder,
+  .apply-form textarea::placeholder {
+    color: #aaa; /* Lighter placeholder text */
+  }
+  
+  .apply-form button {
+    padding: 0.8rem;
+    font-size: 1rem;
+    background-color: #16a34a; /* Green button matching app design */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .apply-form button:hover {
+    background-color: #15803d; /* Darker green on hover */
+  }
+  
+  .confirmation {
+    margin-top: 1.5rem;
+    color: #16a34a; /* Green color for success message */
+  }
+  
+  .confirmation a {
+    color: #16a34a;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    display: inline-block;
+  }
+  
+  .confirmation a:hover {
+    text-decoration: underline;
+  }
+  

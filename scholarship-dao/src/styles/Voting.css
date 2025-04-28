@@ -1,0 +1,52 @@
+/* Voting.css */
+.voting-page {
+    max-width: 800px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 2rem;
+    text-align: center;
+    background-color: #1a1a1a; /* Matching dark background */
+    border-radius: 1rem;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .proposals-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .proposal-card {
+    background-color: #222; /* Slightly lighter than page bg */
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: left;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .proposal-card h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .proposal-card p {
+    margin: 0.5rem 0;
+    color: #ccc;
+  }
+  
+  .vote-button {
+    margin-top: 1rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    background-color: #16a34a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .vote-button:hover {
+    background-color: #15803d;
+  }
+  
