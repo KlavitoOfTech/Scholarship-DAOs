@@ -75,54 +75,44 @@ function App() {
               <h2>DAO</h2>
             </div>
           </div>
+          <nav>
+            <ul>
+              <li><Link to="/" style={{ marginRight: "1rem", color: "white" }}>Home</Link></li>
+              <li><Link to="/apply" style={{ marginRight: "1rem", color: "white" }}>Apply</Link></li>
+              <li><Link to="/vote" style={{ color: "white" }}>Vote</Link></li>
+            </ul>
+          </nav>
           {account && (
             <div className="profile">
+              <h2>Admin</h2>
               <img src="https://i.pravatar.cc/40?img=3" alt="Profile" />
             </div>
           )}
         </div>
 
-        <div style={{ marginBottom: "2rem" }}>
-          <Link to="/" style={{ marginRight: "1rem", color: "white" }}>Home</Link>
-          <Link to="/apply" style={{ color: "white" }}>Apply</Link>
-          <Link to="/vote" style={{ color: "white" }}>Vote</Link>
-        </div>
+        <div className="main-container">
+          <div className="page-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/apply" element={<Apply />} />
+              <Route path="/vote" element={<Voting />} />
+            </Routes>
+          </div>
 
-        <div className="wallet-section">
-          {!account ? (
-            <button className="connect-btn" onClick={connectWallet}>
-              Connect MetaMask
-            </button>
-          ) : (
-            <>
-              <p><strong>Connected:</strong> {account}</p>
-              <p><strong>DAO Balance:</strong> {balance} ETH</p>
-              <p><strong>Proposals Created:</strong> {proposalCount}</p>
-            </>
-          )}
+          <div className="wallet-section">
+            {!account ? (
+              <button className="connect-btn" onClick={connectWallet}>
+                Connect MetaMask
+              </button>
+            ) : (
+              <>
+                <p><strong>Connected:</strong> {account}</p>
+                <p><strong>DAO Balance:</strong> {balance} ETH</p>
+                <p><strong>Proposals Created:</strong> {proposalCount}</p>
+              </>
+            )}
+          </div>
         </div>
-
-        {/* Routes */}
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home />
-            }
-          />
-          <Route
-            path="/apply"
-            element={
-              <Apply />
-            }
-          />
-          <Route
-            path="/vote"
-            element={
-              <Voting />
-            }
-          />
-        </Routes>
       </div> 
     </>
   );
