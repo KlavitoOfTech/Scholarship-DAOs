@@ -51,7 +51,7 @@ describe("ScholarshipDAO", function () {
 
   it("Should execute a proposal", async function () {
     await scholarshipDAO.registerVoter(voter.address);
-    const amount = parseEther("0,001");
+    const amount = parseEther("0.001");
     await scholarshipDAO.createProposal("Proposal 1", "This is a proposal description.", amount, voter.address);
 
     await scholarshipDAO.connect(voter).vote(0);
