@@ -71,7 +71,7 @@ function App() {
           <div className="branding">
             <div className="logo-circle">S</div>
             <div className="dao-title">
-              <h2>Scholarship</h2>
+              <h2>BlockEd</h2>
               <h2>DAO</h2>
             </div>
           </div>
@@ -106,9 +106,17 @@ function App() {
               </button>
             ) : (
               <>
-                <p><strong>Connected:</strong> {account}</p>
-                <p><strong>DAO Balance:</strong> {balance} ETH</p>
-                <p><strong>Proposals Created:</strong> {proposalCount}</p>
+                <p>
+                  <strong style={{ fontSize: "1.2rem" }}>Connected:</strong>{" "}
+                  {account ? `${account.slice(0, 6)}...${account.slice(-4)}` : ""}
+                </p>
+                <p className="eth-balance">
+                  <strong>DAO Balance:</strong>
+                  <span className="eth-amount">
+                    {balance} ETH
+                  </span>
+                </p>
+                <p><strong style={{ fontSize: "1.2rem" }}>Proposals Created:</strong> {proposalCount}</p>
               </>
             )}
           </div>
