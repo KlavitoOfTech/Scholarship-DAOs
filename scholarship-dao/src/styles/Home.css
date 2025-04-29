@@ -1,54 +1,48 @@
-/* src/styles/home.css */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: white;
+}
 
-.wallet-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    background-color: #f4f4f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-top: 2rem;
-  }
-  
-  .wallet-section button.connect-btn {
-    background-color: #0061F2;
-    color: white;
-    font-size: 1rem;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .wallet-section button.connect-btn:hover {
-    background-color: #004bb5;
-  }
-  
-  .wallet-section p {
-    font-size: 1.1rem;
-    color: #333;
-    margin: 10px 0;
-  }
-  
-  .wallet-section p strong {
-    font-weight: bold;
-  }
-  
-  .profile {
-    margin-top: 1rem;
-  }
-  
-  .profile img {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-  }
-  
-  .connect-btn {
-    margin-top: 1rem;
-  }
-  
+.gradient-heading {
+  background: linear-gradient(to right, green, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; 
+  color: transparent;
+  font-size: 3rem;
+  margin-bottom: -30px;
+}
+
+.cards {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.card {
+  background: #2a2a2a;
+  border-radius: 12px;
+  padding: 1.5rem;
+  flex: 1 1 250px;
+  min-width: 250px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.5); /* green glow */
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+.card p {
+  margin: 0;
+  line-height: 1.4;
+}
