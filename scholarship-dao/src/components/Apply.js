@@ -29,7 +29,7 @@ function Apply() {
       await tx.wait(); // wait for transaction confirmation
       setTxHash(tx.hash);
     } catch (error) {
-      console.error("Application failed:", error);
+      console.log("Application failed:", error);
     }
   };
 
