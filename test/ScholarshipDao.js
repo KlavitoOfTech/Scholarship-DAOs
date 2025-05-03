@@ -7,7 +7,6 @@ const { parseEther } = ethers;
 
 describe("ScholarshipDAO", function () {
   let ScholarshipDAO;
-  let scholarshipDAO;
   let admin;
   let voter;
   let nonVoter;
