@@ -4,6 +4,7 @@ import { ethers } from "ethers";
 import Home from "./components/Home";
 import Apply from "./components/Apply";
 import Voting from "./components/Voting";
+import Results from "./components/Result";
 import "./styles/App.css";
 
 // Contract details
@@ -17,29 +18,40 @@ const contractABI = [
   "function executeProposal(uint256)",
   "function proposalsLength() view returns (uint256)"
 ];
-const contractAddress = "0xD03ed2100F59eD19819093eDf1bf8618cC71Dc63"; // Replace with your contract address
+const contractAddress = "0xD03ed2100F59eD19819093eDf1bf8618cC71Dc63"; 
 
 function App() {
   const [account, setAccount] = useState(null);
   const [balance, setBalance] = useState("0");
   const [proposalCount, setProposalCount] = useState(0);
+  const [errorMessage, setErrorMessage] = useState('');
 
+  const checkIfWalletConnected = async () => {
+    if (window.ethereum) {
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const accounts = await provider.send("eth_accounts", []);
+      if (accounts.length > 0) {
+        const address = accounts[0];
+        setAccount(address);
+  
+        const contract = new ethers.Contract(contractAddress, contractABI, provider);
+        const rawBalance = await provider.getBalance(contractAddress);
+        setBalance(ethers.formatEther(rawBalance));
+  
+        const length = await contract.proposalsLength().catch(() => 0);
+        setProposalCount(length?.toString());
+      }
+    }
+  };
+  
   const connectWallet = async () => {
     if (window.ethereum) {
       try {
         const provider = new ethers.BrowserProvider(window.ethereum);
-  
-        // Check if already connected
-        const accounts = await provider.send("eth_accounts", []);
-        if (accounts.length > 0) {
-          const address = accounts[0];
-          setAccount(address);
-        } else {
-          // Only if not connected, request connection
-          const signer = await provider.getSigner();
-          const address = await signer.getAddress();
-          setAccount(address);
-        }
+        const signer = await provider.getSigner(); // This will prompt MetaMask
+        const address = await signer.getAddress();
+        setAccount(address);
+        setErrorMessage(''); // Clear error if successful
   
         const contract = new ethers.Contract(contractAddress, contractABI, provider);
         const rawBalance = await provider.getBalance(contractAddress);
@@ -48,19 +60,18 @@ function App() {
         const length = await contract.proposalsLength().catch(() => 0);
         setProposalCount(length?.toString());
       } catch (error) {
-        console.error(error);
-        alert("Failed to connect wallet");
+        console.error("Wallet connection error:", error);
+        setErrorMessage("Failed to connect wallet");
       }
     } else {
-      alert("MetaMask not detected");
+      setErrorMessage("MetaMask not detected");
     }
   };  
-
+  
   useEffect(() => {
-    if (window.ethereum) {
-      connectWallet();
-    }
+    checkIfWalletConnected(); // only check silently, don't trigger MetaMask
   }, []);
+  
 
   console.log("Rendering App component");
 
@@ -101,9 +112,14 @@ function App() {
 
           <div className="wallet-section">
             {!account ? (
-              <button className="connect-btn" onClick={connectWallet}>
-                Connect MetaMask
-              </button>
+              <>
+                <button className="connect-btn" onClick={connectWallet}>
+                  Connect MetaMask
+                </button>
+                {errorMessage && (
+                  <p style={{ color: 'red', marginTop: '0.5rem' }}>{errorMessage}</p>
+                )}
+              </>
             ) : (
               <>
                 <p>
@@ -116,9 +132,10 @@ function App() {
                     {balance} ETH
                   </span>
                 </p>
-                <p><strong style={{ fontSize: "1.2rem" }}>Proposals Created:</strong> {proposalCount}</p>
+                <p className="eth-proposals"><strong style={{ fontSize: "1.2rem" }}>Proposals Created:</strong> {proposalCount}</p>
               </>
             )}
+            <Results />
           </div>
         </div>
       </div> 
