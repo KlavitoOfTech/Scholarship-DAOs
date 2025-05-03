@@ -1,67 +1,104 @@
 /* Apply.css */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .apply-page {
-    max-width: 400px;
-    margin: auto;
-    margin-top: 50px;
-    padding: 2rem;
-    text-align: center;
-    background-color: #1a1a1a; /* Matching dark background */
-    border-radius: 1rem; /* Rounded corners to match the card-like appearance */
-    color: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Adding subtle shadow */
-  }
-  
-  .apply-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .apply-form input,
-  .apply-form textarea {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding: 0.8rem;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    background-color: #333; /* Dark input background for consistency */
-    color: white;
-  }
-  
-  .apply-form input::placeholder,
-  .apply-form textarea::placeholder {
-    color: #aaa; /* Lighter placeholder text */
-  }
-  
-  .apply-form button {
-    padding: 0.8rem;
-    font-size: 1rem;
-    background-color: #16a34a; /* Green button matching app design */
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .apply-form button:hover {
-    background-color: #15803d; /* Darker green on hover */
-  }
-  
-  .confirmation {
-    margin-top: 1.5rem;
-    color: #16a34a; /* Green color for success message */
-  }
-  
-  .confirmation a {
-    color: #16a34a;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 0.5rem;
-    display: inline-block;
-  }
-  
-  .confirmation a:hover {
-    text-decoration: underline;
-  }
-  
+  max-width: 400px;
+  margin: auto;
+  margin-top: 60px;
+  padding: 2.5rem;
+  text-align: center;
+  background-color: #1a1a1a;
+  border-radius: 1rem;
+  color: white;
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.5); /* green glow */
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.apply-page h2 {
+  background: linear-gradient(to right, green, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.apply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeInUp 1s ease-out;
+}
+
+.apply-form input,
+.apply-form textarea {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 0.9rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #444;
+  background-color: #2a2a2a;
+  color: white;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.apply-form input:focus,
+.apply-form textarea:focus {
+  border-color: #16a34a;
+  box-shadow: 0 0 8px rgba(22, 163, 74, 0.6);
+  outline: none;
+}
+
+.apply-form input::placeholder,
+.apply-form textarea::placeholder {
+  color: #aaa;
+}
+
+.apply-form button {
+  padding: 0.9rem;
+  font-size: 1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.apply-form button:hover {
+  background-color: #1ea14e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(76, 175, 80, 0.4);
+}
+
+.confirmation {
+  margin-top: 1.5rem;
+  color: #16a34a;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.confirmation a {
+  color: #16a34a;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  display: inline-block;
+  transition: text-decoration 0.3s;
+}
+
+.confirmation a:hover {
+  text-decoration: underline;
+}

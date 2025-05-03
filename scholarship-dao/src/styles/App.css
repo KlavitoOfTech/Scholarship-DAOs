@@ -214,3 +214,7 @@ nav ul li a:hover::after {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.eth-proposals {
+  margin-bottom: 100px;
+}
