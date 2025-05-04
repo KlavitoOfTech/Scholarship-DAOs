@@ -146,7 +146,8 @@ nav ul li a:hover::after {
   display: flex;
   padding: 2rem;
   gap: 2rem;
-  margin-top: 80px; /* because of fixed header */
+  position: sticky;
+  margin-top: 80px; 
 }
 
 .page-content {
@@ -155,7 +156,7 @@ nav ul li a:hover::after {
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  min-height: 70vh;
+  height: 100%;
   color: white;
   border-right: 1px solid white;
   animation: fadeIn 0.6s ease;
@@ -170,7 +171,9 @@ nav ul li a:hover::after {
   height: 100vh;
   position: sticky;
   top: 100px;
+  overflow-y: auto;
   animation: fadeIn 0.6s ease;
+  border: 1px solid #2e2e2e;
 }
 
 .connect-btn {
@@ -218,3 +221,25 @@ nav ul li a:hover::after {
 .eth-proposals {
   margin-bottom: 100px;
 }
+
+.connect-container, .result-container {
+  background: #0f0f0f;
+  border-radius: 12px;
+  padding: 2rem;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.6s ease;
+  margin-bottom: 2rem;
+  border: 1px solid #2e2e2e;
+  margin-top: 50px;
+}
+
+.connect-container:hover, .result-container:hover {
+  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.connect-container p, .result-container p {
+  margin: 1rem 0;
+}
+

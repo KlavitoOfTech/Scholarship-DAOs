@@ -121,7 +121,7 @@ function App() {
                 )}
               </>
             ) : (
-              <>
+              <div className="connect-container">
                 <p>
                   <strong style={{ fontSize: "1.2rem" }}>Connected:</strong>{" "}
                   {account ? `${account.slice(0, 6)}...${account.slice(-4)}` : ""}
@@ -133,9 +133,11 @@ function App() {
                   </span>
                 </p>
                 <p className="eth-proposals"><strong style={{ fontSize: "1.2rem" }}>Proposals Created:</strong> {proposalCount}</p>
-              </>
+              </div>
             )}
-            <Results />
+            <div className="result-container">
+              <Results />
+            </div>
           </div>
         </div>
       </div> 
