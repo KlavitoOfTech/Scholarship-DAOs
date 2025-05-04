@@ -1,13 +1,32 @@
-# Sample Hardhat Project
+# Scholarship DAO 🏛️
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+A decentralized app that allows users to apply, vote, and fund scholarship proposals using Ethereum smart contracts.
 
-Try running some of the following tasks:
+## Features
+- ✅ Create and vote on proposals
+- ✅ Finalize winner and send ETH
+- ✅ Admin control panel
+- ✅ Sepolia deployment
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
-```
+## Live Demo
+🔗 [Visit DApp](https://your-dapp-url.vercel.app)
+
+## Screenshots
+![Home](screenshots/home.png)
+![Voting](screenshots/vote.png)
+![Results](screenshots/results.png)
+
+## How to Run Locally
+1. Clone repo
+2. Install dependencies: `npm install`
+3. Start frontend: `npm run dev`
+
+## Tech Stack
+- Solidity
+- Hardhat
+- React
+- Ethers.js
+- Vercel
+
+## License
+MIT
