@@ -9,7 +9,7 @@ A decentralized app that allows users to apply, vote, and fund scholarship propo
 - ✅ Sepolia deployment
 
 ## Live Demo
-🔗 [Visit DApp](https://scholarship-da-os-kl3v-lfycvoz4u-ejibe-clavers-projects.vercel.app/)
+🔗 [Visit DApp](https://scholarship-da-os-kl3v.vercel.app/)
 
 ## Screenshots
 ![Home](screenshots/home.png)
